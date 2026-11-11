@@ -1,0 +1,578 @@
+/* ============================================================
+   Palet warna
+   Netral biru + satu warna aksen biru. Mode terang hanya
+   mengganti nilai variabel, jadi seluruh elemen ikut berubah.
+   ============================================================ */
+:root {
+    color-scheme: dark;
+
+    --bg: #0A0A0A;
+    --surface: #141414;
+    --surface-2: #202020;
+    --surface-3: #2B2B2B;
+    --border: #383838;
+    --text: #F2F2F2;
+    --text-muted: #A3A3A3;
+
+    --aksen: #E5E5E5;
+
+    --btn-bg: #E5E5E5;
+    --btn-text: #111111;
+    --btn-bg-hover: #CFCFCF;
+
+    --shadow: 0 16px 32px rgba(0, 0, 0, 0.5);
+    --overlay: rgba(0, 0, 0, 0.72);
+
+    --lulus: #E5E5E5;
+    --lulus-bg: rgba(229, 229, 229, 0.14);
+    --remedial: #BDBDBD;
+    --remedial-bg: rgba(189, 189, 189, 0.14);
+    --danger: #A8A8A8;
+    --danger-bg: rgba(168, 168, 168, 0.12);
+}
+
+:root.light-mode {
+    color-scheme: light;
+
+    --bg: #F3F3F3;
+    --surface: #FFFFFF;
+    --surface-2: #EAEAEA;
+    --surface-3: #DCDCDC;
+    --border: #D0D0D0;
+    --text: #171717;
+    --text-muted: #666666;
+
+    --aksen: #222222;
+
+    --btn-bg: #222222;
+    --btn-text: #FFFFFF;
+    --btn-bg-hover: #444444;
+
+    --shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
+    --overlay: rgba(0, 0, 0, 0.45);
+
+    --lulus: #333333;
+    --lulus-bg: rgba(51, 51, 51, 0.12);
+    --remedial: #666666;
+    --remedial-bg: rgba(102, 102, 102, 0.12);
+    --danger: #555555;
+    --danger-bg: rgba(85, 85, 85, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    align-items: safe center;
+    justify-content: center;
+    padding: 32px;
+}
+
+body,
+.profile-card,
+.panel,
+.card-aside,
+.modal-box,
+.skill-badge {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline: 2px solid var(--aksen);
+    outline-offset: 2px;
+}
+
+.page-wrapper {
+    width: 100%;
+    max-width: 820px;
+    padding: 0;
+}
+
+/* ---------- Kartu portofolio (index.html) ---------- */
+.profile-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: clamp(16px, 4vw, 36px);
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow);
+    gap: clamp(16px, 4vw, 36px);
+}
+
+.card-aside {
+    width: clamp(200px, 30vw, 260px);
+    flex-shrink: 0;
+    padding-right: clamp(16px, 3vw, 28px);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.avatar-icon {
+    width: clamp(70px, 12vw, 90px);
+    height: clamp(70px, 12vw, 90px);
+    border-radius: 50%;
+    display: block;
+    margin-bottom: 14px;
+    object-position: center;
+    object-fit: cover;
+    border: 2px solid var(--surface-3);
+}
+
+.student-name {
+    font-size: clamp(20px, 3.5vw, 26px);
+    font-weight: 700;
+    font-family: "Caveat", cursive;
+    color: var(--text);
+}
+
+.student-role {
+    font-size: 13px;
+    margin-top: 2px;
+    color: var(--text-muted);
+}
+
+.student-school {
+    font-size: 13px;
+    margin-top: 2px;
+    color: var(--text-muted);
+}
+
+/* ---------- Tombol (dua gaya saja) ---------- */
+.btn-contact {
+    margin-top: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px 20px;
+    border: 1px solid var(--btn-bg);
+    border-radius: 8px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    text-decoration: none;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.btn-contact:hover {
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-bg-hover);
+    transform: translateY(-1px);
+}
+
+.btn-contact:active {
+    transform: translateY(0);
+}
+
+.btn-kalkulator {
+    margin-top: 10px;
+    background-color: var(--surface-2);
+    border-color: var(--border);
+    color: var(--text);
+}
+
+.btn-kalkulator:hover {
+    background-color: var(--surface-3);
+    border-color: var(--aksen);
+    color: var(--text);
+}
+
+.btn-tema {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    padding: 7px 12px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background-color: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.btn-tema:hover {
+    background-color: var(--surface-2);
+    border-color: var(--surface-3);
+    color: var(--text);
+}
+
+.card-content {
+    flex: 1;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section-heading {
+    font-size: 13px;
+    color: var(--aksen);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.bio-text {
+    font-size: clamp(13px, 2.2vw, 15px);
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+.skill-matrix {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.skill-badge {
+    background-color: var(--surface-2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    font-weight: 500;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.skill-badge:hover {
+    background-color: var(--surface-3);
+    border-color: var(--aksen);
+}
+
+/* ---------- Modal ---------- */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: var(--overlay);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    z-index: 10;
+}
+
+.modal-overlay.show {
+    display: flex;
+}
+
+.modal-box {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: clamp(20px, 4vw, 28px);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: var(--shadow);
+}
+
+.modal-box h2 {
+    font-size: 20px;
+    font-family: "Caveat", cursive;
+    margin-bottom: 12px;
+}
+
+.modal-box p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+    word-break: break-word;
+}
+
+.modal-box button {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: 1px solid var(--btn-bg);
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.modal-box button:hover {
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-bg-hover);
+}
+
+/* ============================================================
+   Halaman kalkulator nilai (tantangan P1-W06)
+   Sengaja dibuat polos seperti alat: label jelas, tanpa badge,
+   tanpa angka raksasa, tanpa hiasan.
+   ============================================================ */
+.panel {
+    background-color: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: var(--shadow);
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.tautan {
+    padding: 2px 0;
+    border: none;
+    border-bottom: 1px solid transparent;
+    background: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 13px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tautan:hover {
+    color: var(--text);
+    border-bottom-color: var(--aksen);
+}
+
+.panel h1 {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+.keterangan {
+    margin-top: 6px;
+    margin-bottom: 20px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-muted);
+}
+
+.baris-isian {
+    display: grid;
+    grid-template-columns: 1fr 110px;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.baris-isian label {
+    font-size: 14px;
+    color: var(--text);
+}
+
+.baris-isian input {
+    width: 100%;
+    padding: 9px 10px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 15px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    appearance: textfield;
+    -moz-appearance: textfield;
+    transition: border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.baris-isian input::-webkit-outer-spin-button,
+.baris-isian input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.baris-isian input:hover {
+    border-color: var(--surface-3);
+}
+
+.baris-isian input:focus {
+    outline: none;
+    border-color: var(--aksen);
+}
+
+.aksi {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.tombol-utama {
+    padding: 10px 20px;
+    border: 1px solid var(--btn-bg);
+    border-radius: 6px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.tombol-utama:hover {
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-bg-hover);
+}
+
+.tombol-teks {
+    padding: 6px 0;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 13.5px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.tombol-teks:hover {
+    color: var(--text);
+}
+
+.pesan {
+    margin-top: 14px;
+    font-size: 13px;
+    color: var(--danger);
+}
+
+.pesan[hidden] {
+    display: none;
+}
+
+.hasil {
+    margin-top: 22px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hasil-baris {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.hasil-baris dt {
+    color: var(--text-muted);
+}
+
+.hasil-baris dd {
+    margin: 0;
+    font-weight: 600;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.hasil-baris dd.teks-lulus {
+    color: var(--lulus);
+}
+
+.hasil-baris dd.teks-remedial {
+    color: var(--remedial);
+}
+
+.hasil-baris dd.teks-kosong {
+    color: var(--text-muted);
+    font-weight: 400;
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 16px;
+    }
+
+    .profile-card {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+        padding: 20px;
+    }
+
+    .card-aside {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding-right: 0;
+        padding-bottom: 20px;
+    }
+
+    .btn-contact {
+        max-width: 240px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .panel {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .baris-isian {
+        grid-template-columns: 1fr 90px;
+    }
+
+    .aksi {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .tombol-teks {
+        text-align: left;
+    }
+}
+
+@media (max-width: 360px) {
+    .profile-card {
+        padding: 16px;
+    }
+
+    .student-name {
+        font-size: 20px;
+    }
+
+    .bio-text {
+        font-size: 14px;
+    }
+}

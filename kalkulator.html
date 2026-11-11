@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Nilai Rapor - Indra Yudhistira</title>
+    <link rel="icon" href="img/indra.jpeg">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="js/script.js" defer></script>
+</head>
+<body>
+
+    <main class="page-wrapper">
+        <article class="panel">
+
+            <div class="panel-head">
+                <a class="tautan" href="index.html">&larr; Portofolio</a>
+                <button id="btnToggleTema" class="tautan" type="button" aria-pressed="false">
+                    Mode terang
+                </button>
+            </div>
+
+            <h1>Kalkulator Nilai Rapor</h1>
+            <p class="keterangan">
+                Isi nilai tugas, UTS, dan UAS (0 - 100). Rata-rata, predikat, dan status KKM dihitung otomatis.
+            </p>
+
+            <form id="formNilai" novalidate>
+                <div class="baris-isian">
+                    <label for="tugas">Nilai tugas</label>
+                    <input type="number" id="tugas" name="tugas" min="0" max="100" step="0.1" inputmode="decimal" placeholder="85" autocomplete="off">
+                </div>
+                <div class="baris-isian">
+                    <label for="uts">Nilai UTS</label>
+                    <input type="number" id="uts" name="uts" min="0" max="100" step="0.1" inputmode="decimal" placeholder="78" autocomplete="off">
+                </div>
+                <div class="baris-isian">
+                    <label for="uas">Nilai UAS</label>
+                    <input type="number" id="uas" name="uas" min="0" max="100" step="0.1" inputmode="decimal" placeholder="89" autocomplete="off">
+                </div>
+
+                <div class="aksi">
+                    <button type="submit" id="btnHitung" class="tombol-utama">Hitung</button>
+                    <button type="reset" id="btnReset" class="tombol-teks">Kosongkan isian</button>
+                </div>
+            </form>
+
+            <p id="pesan" class="pesan" hidden></p>
+
+            <dl id="hasil" class="hasil" aria-live="polite">
+                <div class="hasil-baris">
+                    <dt>Rata-rata</dt>
+                    <dd id="nilaiRataRata" class="teks-kosong">belum dihitung</dd>
+                </div>
+                <div class="hasil-baris">
+                    <dt>Predikat</dt>
+                    <dd id="nilaiPredikat" class="teks-kosong">belum dihitung</dd>
+                </div>
+                <div class="hasil-baris">
+                    <dt>Status</dt>
+                    <dd id="nilaiStatus" class="teks-kosong">belum dihitung</dd>
+                </div>
+            </dl>
+
+        </article>
+    </main>
+    <script>
+        (() => {
+            const tombolTema = document.getElementById("btnToggleTema");
+            if (!tombolTema) return;
+
+            const elemenTema = document.documentElement;
+            const labelModeGelap = tombolTema.textContent.trim();
+            const labelModeTerang = "Mode Gelap";
+            const kunciTema = "tema-pilihan";
+
+            function terapkanTema(modeTerang) {
+                elemenTema.classList.toggle("light-mode", modeTerang);
+                tombolTema.textContent = modeTerang ? labelModeTerang : labelModeGelap;
+                tombolTema.setAttribute("aria-pressed", modeTerang ? "true" : "false");
+            }
+
+            let temaTersimpan = "gelap";
+            try {
+                temaTersimpan = localStorage.getItem(kunciTema) || "gelap";
+            } catch (error) {
+                // Tombol tetap berfungsi jika penyimpanan browser tidak tersedia.
+            }
+
+            terapkanTema(temaTersimpan === "terang");
+
+            tombolTema.addEventListener("click", () => {
+                const modeTerang = !elemenTema.classList.contains("light-mode");
+                terapkanTema(modeTerang);
+
+                try {
+                    localStorage.setItem(kunciTema, modeTerang ? "terang" : "gelap");
+                } catch (error) {
+                    // Perubahan tema tetap berlaku pada halaman yang sedang dibuka.
+                }
+            });
+        })();
+    </script>
+</body>
+</html>

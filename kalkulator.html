@@ -85,7 +85,7 @@
             try {
                 temaTersimpan = localStorage.getItem(kunciTema) || "gelap";
             } catch (error) {
-                // Tombol tetap berfungsi jika penyimpanan browser tidak tersedia.
+                
             }
 
             terapkanTema(temaTersimpan === "terang");
@@ -97,7 +97,7 @@
                 try {
                     localStorage.setItem(kunciTema, modeTerang ? "terang" : "gelap");
                 } catch (error) {
-                    // Perubahan tema tetap berlaku pada halaman yang sedang dibuka.
+                    
                 }
             });
         })();
